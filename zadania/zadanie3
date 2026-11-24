@@ -1,1 +1,103 @@
 
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFA500"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="napis)"
+        android:id="@+id/tekstView"
+        android:background="@color/orange"
+ />
+    <SeekBar
+        android:id="@+id/SeekBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:progress="0"
+        android:max="100"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tekstViewProcent"
+        />
+    </LinearLayout>
+</FrameLayout>    
+
+
+
+package com.example.myapplication;
+
+import android.graphics.Color;
+import android.os.Bundle;
+import android.widget.SeekBar;
+import android.widget.TextView;
+
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.ColorUtils;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+import android.graphics.Color;                    // narzędzia do kolorów: parseColor(), alpha()
+import android.os.Bundle;                         // paczka z zapisanym stanem aktywności (onCreate)
+import android.text.Editable;                     // edytowalny tekst z pola EditText (parametr afterTextChanged)
+import android.text.TextWatcher;                  // interfejs "obserwatora" zmian tekstu
+import android.widget.EditText;                   // pole do wpisywania tekstu
+import android.widget.LinearLayout;               // typ naszego panelu
+import android.widget.RadioGroup;                 // grupa przycisków radiowych
+import android.widget.SeekBar;                    // suwak
+import android.widget.TextView;                   // napis
+
+import androidx.appcompat.app.AppCompatActivity;  // bazowa klasa ekranu (zgodna ze starszymi Androidami)
+import androidx.core.graphics.ColorUtils;
+public class MainActivity extends AppCompatActivity {
+    private static final int BASE_COLOR = Color.parseColor("#CC121212");
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_main);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
+        SeekBar seekBar = findViewById(R.id.SeekBar);
+        TextView tekstView = findViewById(R.id.tekstView);
+        TextView tekstViewProcent = findViewById(R.id.tekstViewProcent);
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                int alfa = Color.alpha()
+                tekstView.setTextColor(ColorUtils.setAlphaComponent()
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+    }
+
+
+}
